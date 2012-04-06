@@ -1,0 +1,27 @@
+#1=90 (length)
+#2=4 (edge)
+#3=9 (tool radius)
+#4=200 (feed)
+#5=30 (with1)
+#6=0 (depth)
+
+f#4
+m3 s1
+O101 while [#6-3 lt #2]
+  #6=[#6+2]
+  g0 y7 z[-#6]
+  g1 x#1
+  g2 x#1 y-7 i0 j-7 f[#4/2]
+  g1 x0 f#4
+  g0 y0
+O101 endwhile
+
+#6=[#2+4]
+g0 y11 z[-#6]
+g1 x#1
+g2 x#1 y-11 i0 j-11 f[#4/2]
+g1 x0 f#4
+g0 y0
+
+m2
+%
