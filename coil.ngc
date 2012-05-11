@@ -1,17 +1,23 @@
 (coil)
-#1=64.5 (path radius)
-#2=11 (total depth)
-#4=100 (feed)
-#6=0 (working parameter for depth)
-
-g0 x0y0z0
+#1=10	(path radius)
+#2=10	(total depth)
+#3=2	(coil incrementation)
+#4=100	(feed)
+#6=0	(working parameter for depth)
 
 f[#4]
 m3 s1
-O101 while [#6-1 lt #2]
-  #6=[#6+1]
+
+g0 x0 y0 z1
+g0 x[-#1] y0 z1
+g1 z0
+O101 while [#6+#3 lt #2]
+  #6=[#6+2]
   g2 i[#1] j0 z[-#6]
 O101 endwhile
-g0 z0
+g2 i[#1] j0 z[-#2] 
+g2 i[#1] j0 
+
+g0 z1
 m2
 %
