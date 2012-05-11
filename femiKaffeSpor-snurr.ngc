@@ -1,0 +1,79 @@
+#1=248 (length from start to end of straight line)
+#2=8 (total depth)
+#3=9 (tool radius)
+#4=200 (feed)
+#5=50 (crossStart)
+#6=0 (working parameter for depth)
+#7=2 (glefs)
+
+f[#4]
+
+m3 s1
+g0 x0 y0 z10
+g0 z0
+
+
+
+(loop for milling)
+#6=[#7]
+O101 while [#6 lt #2]
+  g0 y7 z[-#6]
+  g1 x43
+  g1 y0
+  g2 x[100] y[50+7] i57 j0
+  g1 x[#1]
+  g2 x[#1] y[43] i0 j[-7]
+  g1 x[100]
+  g3 x[100] y-43 i0 j[-43]
+  g1 x[#1]
+  g2 x[#1] y[-57] i0 j[-7]
+  g1 x[100]
+  g2 x[43] y0 i0 j[50+7]
+  g1 y7
+  g1 x#1
+  g2 x#1 y-7 i0 j-7
+  g1 x0
+  g0 y0
+  #6=[#6+#7]
+O101 endwhile
+(last run for last run)
+#6=[#2]
+
+g0 y7 z[-#6]
+g1 x43
+g1 y0
+g2 x[100] y[50+7] i57 j0
+g1 x[#1]
+g2 x[#1] y[43] i0 j[-7]
+g1 x[100]
+g3 x[100] y-43 i0 j[-43]
+g1 x[#1]
+g2 x[#1] y[-57] i0 j[-7]
+g1 x[100]
+g2 x[43] y0 i0 j[50+7]
+g1 y7
+g1 x#1
+g2 x#1 y-7 i0 j-7
+g1 x0
+g0 y0
+
+g0 y11 z[-#6]
+g1 x#1
+g2 x#1 y-11 i0 j-11
+g1 x39
+g1 y0
+g2 x[100] y[61] i61 j0
+g1 x[#1]
+g2 x[#1] y[39] i0 j[-11]
+g1 x[100]
+g3 x[100] y-39 i0 j[-39]
+g1 x[#1]
+g2 x[#1] y[-61] i0 j[-11]
+g1 x[100]
+g2 x[39] y0 i0 j[61]
+g1 y-11
+g1 x0
+g0 y0
+
+m2
+%

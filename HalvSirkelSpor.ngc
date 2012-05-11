@@ -1,0 +1,27 @@
+(Variables to be set from user)
+#1=300 (Feed)
+#2=17 (Radie of half arc)
+#3=9 (Radie of tool)
+#4=3 (Depth of tool)
+#5=30 (Total depth of cut)
+
+(Variables to be changed from machine)
+#7=0 (Depth)
+
+F#1
+M3 S1
+
+O101 while [#7 gt [-#5]]
+G0 Y[#2-#3] Z[#7-#4]
+#7=[#7-#4]
+G1 X#3
+G2 X#3 Y[-#2+#3] I0 J[-#2+#3]
+G0 X0
+O101 endwhile
+
+G0 X0 Y0 Z0
+
+M5
+M2
+%
+
